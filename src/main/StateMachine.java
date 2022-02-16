@@ -6,7 +6,7 @@ public class StateMachine {
 
 	public Machine build() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Machine();
 	}
 
 	public StateMachine state(String string) {
