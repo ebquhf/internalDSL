@@ -2,11 +2,20 @@ package main.metamodel;
 
 public class Transition {
 
-	private String event;
-	private State target;
+	String event;
+	State target;
+	boolean set;
+	boolean inc;
+	boolean dec;
+	boolean condition;
+	boolean conditionEQ;
+	String operationVariableName;
+	String conditionalVariableName;
+	Integer conditionComparedValue;
+
 	public Transition(String string, State state) {
-		this.event=string;
-		this.target=state;
+		this.event = string;
+		this.target = state;
 	}
 
 	public Object getEvent() {
@@ -17,44 +26,68 @@ public class Transition {
 		return target;
 	}
 
+	public void setSetOperation(boolean val) {
+		set = val;
+	}
+
+	public void setIncrementOperation(boolean val) {
+		inc = val;
+	}
+
+	public void setDecrementOperation(boolean val) {
+		dec = val;
+	}
+
 	public boolean hasSetOperation() {
-		// TODO Auto-generated method stub
-		return false;
+		return set;
 	}
 
 	public boolean hasIncrementOperation() {
-		// TODO Auto-generated method stub
-		return false;
+		return inc;
 	}
 
 	public boolean hasDecrementOperation() {
-		// TODO Auto-generated method stub
-		return false;
+		return dec;
+	}
+
+	public void setOperationVariableName(String name) {
+		operationVariableName = name;
 	}
 
 	public Object getOperationVariableName() {
-		// TODO Auto-generated method stub
-		return null;
+		return operationVariableName;
+	}
+
+	public void setCondition(boolean val) {
+		condition = val;
 	}
 
 	public boolean isConditional() {
-		// TODO Auto-generated method stub
-		return false;
+		return condition;
+	}
+
+	public void setConditionalVariableName(String name) {
+		conditionalVariableName = name;
 	}
 
 	public Object getConditionVariableName() {
-		// TODO Auto-generated method stub
-		return null;
+		return conditionalVariableName;
+	}
+
+	public void setConditionComparedValue(Integer val) {
+		conditionComparedValue = val;
 	}
 
 	public Integer getConditionComparedValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return conditionComparedValue;
+	}
+
+	public void setConditionEqual(boolean val) {
+		conditionEQ = val;
 	}
 
 	public boolean isConditionEqual() {
-		// TODO Auto-generated method stub
-		return false;
+		return conditionEQ;
 	}
 
 	public boolean isConditionGreaterThan() {

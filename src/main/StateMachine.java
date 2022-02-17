@@ -12,9 +12,10 @@ public class StateMachine {
 	private State current;
 	private State initial;
 	private String currentEvent;
-	
+	private Transition currentTransition;
+
 	public Machine build() {
-		return new Machine(states,integers, current, initial);
+		return new Machine(states, integers, current, initial);
 	}
 
 	private State getState(String name) {
@@ -34,42 +35,53 @@ public class StateMachine {
 	}
 
 	public StateMachine when(String string) {
-		currentEvent=string;
+		currentEvent = string;
 		return this;
 	}
 
 	public StateMachine to(String string) {
-		Transition temp = new Transition(currentEvent,getState(string));
-		
-		current.addTransition(temp);
+		currentTransition = new Transition(currentEvent, getState(string));
+
+		current.addTransition(currentTransition);
 		return this;
 	}
 
 	public StateMachine integer(String string) {
 		if (!integers.containsKey(string)) {
-			integers.put(string, null);
+			integers.put(string, 0);
 		}
 		return this;
 	}
 
 	public StateMachine set(String string, int i) {
+		currentTransition.setSetOperation(true);
+		currentTransition.setOperationVariableName(string);
 		integers.put(string, i);
-		return null;
+		return this;
 	}
 
 	public StateMachine increment(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		currentTransition.setSetOperation(false);
+		currentTransition.setIncrementOperation(true);
+		currentTransition.setOperationVariableName(string);
+		integers.put(string, integers.getOrDefault(string,0) + 1);
+		return this;
 	}
 
 	public StateMachine decrement(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		currentTransition.setSetOperation(false);
+		currentTransition.setDecrementOperation(true);
+		currentTransition.setOperationVariableName(string);
+		integers.put(string, integers.getOrDefault(string,0) - 1);
+		return this;
 	}
 
 	public StateMachine ifEquals(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+		currentTransition.setCondition(true);
+		currentTransition.setConditionEqual(true);
+		currentTransition.setConditionalVariableName(string);
+		currentTransition.setConditionComparedValue(i);
+		return this;
 	}
 
 	public StateMachine ifGreaterThan(String string, int i) {
