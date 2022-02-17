@@ -8,11 +8,15 @@ import java.util.List;
 public class Machine {
 
 	HashMap<String, State> states = new HashMap<String, State>();
+	HashMap<String, Integer> integers = new HashMap<String, Integer>();
+	
 	State initial;
 	State current;
-	public Machine(HashMap<String, State> states2, State current, State initial) {
+	public Machine(HashMap<String, State> states2, HashMap<String, Integer> integers2 ,State current, State initial) {
 		this.states=states2;
-		
+		this.integers=integers2;
+		this.initial=initial;
+		this.current=current;
 	}
 
 	public List<State> getStates() {
@@ -29,13 +33,11 @@ public class Machine {
 	}
 
 	public int numberOfIntegers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return integers.size();
 	}
 
 	public boolean hasInteger(String string) {
-		// TODO Auto-generated method stub
-		return false;
+		return integers.containsKey(string);
 	}
 
 }

@@ -6,25 +6,29 @@ import main.metamodel.Machine;
 import main.metamodel.State;
 
 public class StateMachine {
-	private HashMap<String,State> states = new HashMap<String,State>();
+	private HashMap<String, State> states = new HashMap<String, State>();
+	private HashMap<String, Integer> integers = new HashMap<String, Integer>();
 	private State current;
 	private State initial;
-	
+
 	public Machine build() {
 		// TODO Auto-generated method stub
-		return new Machine(states,current,initial);
+		return new Machine(states,integers, current, initial);
 	}
+
 	private State getState(String name) {
-		if(!states.containsKey(name)) states.put(name, new State(name));
+		if (!states.containsKey(name))
+			states.put(name, new State(name));
 		return states.get(name);
 	}
+
 	public StateMachine state(String string) {
-		 current=getState(string);
+		current = getState(string);
 		return this;
 	}
 
 	public StateMachine initial() {
-		initial=getState(current.getName());
+		initial = getState(current.getName());
 		return this;
 	}
 
@@ -39,12 +43,14 @@ public class StateMachine {
 	}
 
 	public StateMachine integer(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!integers.containsKey(string)) {
+			integers.put(string, null);
+		}
+		return this;
 	}
 
 	public StateMachine set(String string, int i) {
-		// TODO Auto-generated method stub
+		integers.put(string, i);
 		return null;
 	}
 
