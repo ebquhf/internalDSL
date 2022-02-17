@@ -7,6 +7,10 @@ public class State {
 	private String name;
 	private List<Transition> transitions = new ArrayList<>();
 
+	public State(String string) {
+		name=string;
+	}
+
 	public Object getName() {
 		return name;
 	}

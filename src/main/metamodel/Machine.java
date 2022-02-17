@@ -1,18 +1,25 @@
 package main.metamodel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Machine {
 
-	List<State> states = new ArrayList<>();
+	HashMap<String, State> states = new HashMap<String, State>();
+	State initial;
+	State current;
+	public Machine(HashMap<String, State> states2, State current, State initial) {
+		this.states=states2;
+		
+	}
+
 	public List<State> getStates() {
-		return states;
+		return  new ArrayList<State>(states.values());
 	}
 
 	public State getInitialState() {
-		// TODO Auto-generated method stub
-		return null;
+		return initial;
 	}
 
 	public State getState(String string) {
