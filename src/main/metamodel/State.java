@@ -11,7 +11,7 @@ public class State {
 		name=string;
 	}
 
-	public Object getName() {
+	public String getName() {
 		return name;
 	}
 

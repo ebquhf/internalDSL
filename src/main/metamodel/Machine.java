@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class Machine {
 
 	HashMap<String, State> states = new HashMap<String, State>();
@@ -23,8 +24,8 @@ public class Machine {
 	}
 
 	public State getState(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		if(!states.containsKey(string)) states.put(string, new State(string));
+		return states.get(string);
 	}
 
 	public int numberOfIntegers() {

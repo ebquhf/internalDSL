@@ -14,15 +14,17 @@ public class StateMachine {
 		// TODO Auto-generated method stub
 		return new Machine(states,current,initial);
 	}
-
+	private State getState(String name) {
+		if(!states.containsKey(name)) states.put(name, new State(name));
+		return states.get(name);
+	}
 	public StateMachine state(String string) {
-		if(!states.containsKey(string)) states.put(string, new State(string));
-		 current=states.get(string);
+		 current=getState(string);
 		return this;
 	}
 
 	public StateMachine initial() {
-		initial=current;
+		initial=getState(current.getName());
 		return this;
 	}
 
