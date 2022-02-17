@@ -4,15 +4,16 @@ import java.util.HashMap;
 
 import main.metamodel.Machine;
 import main.metamodel.State;
+import main.metamodel.Transition;
 
 public class StateMachine {
 	private HashMap<String, State> states = new HashMap<String, State>();
 	private HashMap<String, Integer> integers = new HashMap<String, Integer>();
 	private State current;
 	private State initial;
-
+	private String currentEvent;
+	
 	public Machine build() {
-		// TODO Auto-generated method stub
 		return new Machine(states,integers, current, initial);
 	}
 
@@ -33,13 +34,15 @@ public class StateMachine {
 	}
 
 	public StateMachine when(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		currentEvent=string;
+		return this;
 	}
 
 	public StateMachine to(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		Transition temp = new Transition(currentEvent,getState(string));
+		
+		current.addTransition(temp);
+		return this;
 	}
 
 	public StateMachine integer(String string) {

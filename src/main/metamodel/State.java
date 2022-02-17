@@ -29,4 +29,9 @@ public class State {
 		return null;
 	}
 
+	public void addTransition(Transition temp) {
+		transitions.add(temp);
+		
+	}
+
 }

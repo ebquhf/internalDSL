@@ -4,6 +4,11 @@ public class Transition {
 
 	private String event;
 	private State target;
+	public Transition(String string, State state) {
+		this.event=string;
+		this.target=state;
+	}
+
 	public Object getEvent() {
 		return event;
 	}
