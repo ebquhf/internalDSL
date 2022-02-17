@@ -12,6 +12,9 @@ public class Transition {
 	String operationVariableName;
 	String conditionalVariableName;
 	Integer conditionComparedValue;
+	private boolean conditionGT;
+	private boolean conditionLT;
+	private boolean hasOperation;
 
 	public Transition(String string, State state) {
 		this.event = string;
@@ -89,20 +92,25 @@ public class Transition {
 	public boolean isConditionEqual() {
 		return conditionEQ;
 	}
-
+	public void setConditionGreaterThan(boolean val) {
+		conditionGT=val;
+	}
 	public boolean isConditionGreaterThan() {
-		// TODO Auto-generated method stub
-		return false;
+		return conditionGT;
 	}
-
+	public void setConditionLessThan(boolean val) {
+		conditionLT=val;
+	}
 	public boolean isConditionLessThan() {
-		// TODO Auto-generated method stub
-		return false;
+		return conditionLT;
 	}
-
+	
+	public void setHasOperation(boolean val) {
+		hasOperation=val;
+	}
 	public boolean hasOperation() {
 		// TODO Auto-generated method stub
-		return false;
+		return hasOperation;
 	}
 
 }

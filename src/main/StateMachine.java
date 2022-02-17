@@ -64,6 +64,7 @@ public class StateMachine {
 		currentTransition.setSetOperation(false);
 		currentTransition.setIncrementOperation(true);
 		currentTransition.setOperationVariableName(string);
+		currentTransition.setHasOperation(true);
 		integers.put(string, integers.getOrDefault(string,0) + 1);
 		return this;
 	}
@@ -71,6 +72,7 @@ public class StateMachine {
 	public StateMachine decrement(String string) {
 		currentTransition.setSetOperation(false);
 		currentTransition.setDecrementOperation(true);
+		currentTransition.setHasOperation(true);
 		currentTransition.setOperationVariableName(string);
 		integers.put(string, integers.getOrDefault(string,0) - 1);
 		return this;
@@ -85,13 +87,22 @@ public class StateMachine {
 	}
 
 	public StateMachine ifGreaterThan(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+		currentTransition.setCondition(true);
+		currentTransition.setConditionEqual(false);
+		currentTransition.setConditionGreaterThan(true);
+		currentTransition.setConditionalVariableName(string);
+		currentTransition.setConditionComparedValue(i);
+		return this;
 	}
 
 	public StateMachine ifLessThan(String string, int i) {
-		// TODO Auto-generated method stub
-		return null;
+		currentTransition.setCondition(true);
+		currentTransition.setConditionEqual(false);
+		currentTransition.setConditionGreaterThan(false);
+		currentTransition.setConditionLessThan(true);
+		currentTransition.setConditionalVariableName(string);
+		currentTransition.setConditionComparedValue(i);
+		return this;
 	}
 
 }
