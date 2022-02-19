@@ -73,7 +73,7 @@ public class Transition {
 		conditionalVariableName = name;
 	}
 
-	public Object getConditionVariableName() {
+	public String getConditionVariableName() {
 		return conditionalVariableName;
 	}
 
