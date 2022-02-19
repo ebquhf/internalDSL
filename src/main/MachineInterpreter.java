@@ -22,6 +22,7 @@ public class MachineInterpreter {
 	public void processEvent(String string) {
 		Transition temp = current.getTransitionByEvent(string);
 		if (temp != null) {
+			
 			current = temp.getTarget();
 		}
 	}
