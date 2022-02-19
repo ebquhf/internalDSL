@@ -57,7 +57,7 @@ public class Transition {
 		operationVariableName = name;
 	}
 
-	public Object getOperationVariableName() {
+	public String getOperationVariableName() {
 		return operationVariableName;
 	}
 
@@ -109,7 +109,6 @@ public class Transition {
 		hasOperation=val;
 	}
 	public boolean hasOperation() {
-		// TODO Auto-generated method stub
 		return hasOperation;
 	}
 

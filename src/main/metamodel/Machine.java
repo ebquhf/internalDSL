@@ -39,5 +39,10 @@ public class Machine {
 	public boolean hasInteger(String string) {
 		return integers.containsKey(string);
 	}
-
+	public Integer getInteger(String string) {
+	 if(hasInteger(string)) {
+		 return integers.get(string);
+	 }
+	return 0;
+	}
 }

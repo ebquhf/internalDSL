@@ -1,5 +1,7 @@
 package main;
 
+import java.util.HashMap;
+
 import main.metamodel.Machine;
 import main.metamodel.State;
 import main.metamodel.Transition;
@@ -7,7 +9,7 @@ import main.metamodel.Transition;
 public class MachineInterpreter {
 	Machine machine;
 	State current;
-
+	HashMap<String, Integer> integers = new HashMap<String, Integer>();
 	public void run(Machine m) {
 		machine = m;
 		current = m.getInitialState();
@@ -25,8 +27,7 @@ public class MachineInterpreter {
 	}
 
 	public int getInteger(String string) {
-		// TODO Auto-generated method stub
-		return 0;
+		return machine.getInteger(string);
 	}
 
 }
